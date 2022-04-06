@@ -10,7 +10,6 @@ export interface streamOptions {
     event: DynamoDBStreamEvent,
     index?: string,
     type?: string,
-    endpoint: string,
     refresh?: boolean,
     transformFunction?: transformFunction,
     elasticSearchOptions?: ClientOptions,

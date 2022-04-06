@@ -1,16 +1,8 @@
 const { Client } = require('@elastic/elasticsearch')
-const { createAWSConnection, awsGetCredentials } = require('./aws-es-connection')
 
-module.exports = async (node, options) => {
-  const esParams = { node }
-  let AWSConnection = {}
-
-  const awsCredentials = await awsGetCredentials()
-  AWSConnection = createAWSConnection(awsCredentials)
+module.exports = async (options) => {
 
   const es = new Client({
-    ...AWSConnection,
-    ...esParams,
     ...options
   })
 

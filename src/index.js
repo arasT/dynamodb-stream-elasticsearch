@@ -38,19 +38,17 @@ exports.pushStream = async (
   {
     event,
     index = getTableNameFromARN(event.Records[0].eventSourceARN),
-    endpoint,
     refresh = true,
     useBulk = false,
     transformFunction = undefined,
     elasticSearchOptions
   } = {}) => {
   validateString(index, 'index')
-  validateString(endpoint, 'endpoint')
   validateBoolean(refresh, 'refresh')
   validateBoolean(useBulk, 'useBulk')
   validateFunctionOrUndefined(transformFunction, 'transformFunction')
 
-  const es = await elastic(endpoint, elasticSearchOptions)
+  const es = await elastic(elasticSearchOptions)
 
   const toRemove = []
   const toUpsert = []

@@ -17,6 +17,35 @@
                                                              
                                                                             
 ```
+
+# Hack
+
+The original usage not work with this Hack
+### Original
+```
+  pushStream({
+    event,
+    endpoint: 'https://elastic_search_url',
+    elasticSearchOptions: { auth: { username: ES_USER, password: ES_PWD } }
+  })
+```
+
+### Hacked (user / password auth)
+```
+  pushStream({
+    event,
+    elasticSearchOptions: { auth: { username: ES_USER_NAME, password: ES_PASSWORD } }
+  })
+```
+
+### Hacked (api key auth)
+```
+  pushStream({
+    event,
+    elasticSearchOptions: { auth: { apiKey: API_KEY } }
+  })
+```
+
 # DynamoDB --> Stream --> Elasticsearch
 
 The missing blueprint for AWS Lambda, which reads stream from AWS DynamoDB and writes it to Elasticsearch.
